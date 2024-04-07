@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Display</title>
+  </head>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    .block {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      margin-bottom: 10px;
+    }
+    .inline {
+      display: inline;
+      width: 100px;
+      height: 100px;
+      background-color: green;
+      margin-left: 10px;
+    }
+    .inline-block {
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      background-color: blue;
+      margin-left: 10px;
+    }
+    .input-group {
+      margin-top: 20px;
+    }
+
+    .slider-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .slider-group label {
+      margin-right: 10px;
+    }
+
+    .slider {
+      flex: 1;
+      -webkit-appearance: none;
+      appearance: none;
+      height: 5px;
+      background-color: #ddd;
+      outline: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 15px;
+      height: 15px;
+      background-color: #666;
+      cursor: pointer;
+    }
+
+    .slider::-moz-range-thumb {
+      width: 15px;
+      height: 15px;
+      background-color: #666;
+      cursor: pointer;
+    }
+  </style>
+  <body>
+    <div class="block">block</div>
+    <div class="inline">inline</div>
+    <div class="inline-block">inline-block</div>
+    <div class="input-group">
+      <div class="slider-group">
+        <label for="block-height-slider">Block Height</label>
+        <input
+          class="slider"
+          type="range"
+          id="block-height-slider"
+          min="0"
+          max="1000"
+          value="0"
+        />
+        <output id="block-height-output">0</output>
+      </div>
+      <div class="slider-group">
+        <label for="block-height-slider">Block Height</label>
+        <input
+          class="slider"
+          type="range"
+          id="block-width-slider"
+          min="0"
+          max="1000"
+          value="0"
+        />
+        <output id="block-width-output">0</output>
+      </div>
+    </div>
+    <div class="input-group">
+      <div class="slider-group">
+        <label for="inline-height-slider">Inline Height</label>
+        <input
+          class="slider"
+          type="range"
+          id="inline-height-slider"
+          min="0"
+          max="1000"
+          value="0"
+        />
+        <output id="inline-height-output">0</output>
+      </div>
+      <div class="slider-group">
+        <label for="inline-width-slider">Inline Width</label>
+        <input
+          class="slider"
+          type="range"
+          id="inline-width-slider"
+          min="0"
+          max="1000"
+          value="0"
+        />
+        <output id="inline-width-output">0</output>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <div class="slider-group">
+        <label for="inline-block-height-slider">Inline-Block Height</label>
+        <input
+          class="slider"
+          type="range"
+          id="inline-block-height-slider"
+          min="0"
+          max="1000"
+          value="0"
+        />
+        <output id="inline-block-height-output">0</output>
+      </div>
+      <div class="slider-group">
+        <label for="inline-block-width-slider">Inline-Block Width</label>
+        <input
+          class="slider"
+          type="range"
+          id="inline-block-width-slider"
+          min="0"
+          max="1000"
+          value="0"
+        />
+        <output id="inline-block-width-output">0</output>
+      </div>
+    </div>
+    <script>
+      const blockHeightSlider = document.getElementById("block-height-slider");
+      const blockWidthSlider = document.getElementById("block-width-slider");
+
+      const inlineHeightSlider = document.getElementById("inline-height-slider");
+      const inlineWidthSlider = document.getElementById("inline-width-slider");
+
+      const inlineBlockHeightSlider = document.getElementById("inline-block-height-slider");
+      const inlineBlockWidthSlider = document.getElementById("inline-block-width-slider");
+
+      const blockHeightOutput = document.getElementById("block-height-output");
+      const blockWidthOutput = document.getElementById("block-width-output");
+
+      const inlineHeightOutput = document.getElementById("inline-height-output");
+      const inlineWidthOutput = document.getElementById("inline-width-output");
+
+      const inlineBlockHeightOutput = document.getElementById("inline-block-height-output");
+      const inlineBlockWidthOutput = document.getElementById("inline-block-width-output");
+
+      const blockElement = document.querySelector(".block");
+      const inlineElement = document.querySelector(".inline");
+      const inlineBlockElement = document.querySelector(".inline-block");
+
+      blockHeightSlider.addEventListener("input", () => {
+        const heightValue = blockHeightSlider.value + "px";
+        blockElement.style.height = heightValue;
+        blockHeightOutput.textContent = blockHeightSlider.value;
+      });
+
+      blockWidthSlider.addEventListener("input", () => {
+        const widthValue = blockWidthSlider.value + "px";
+        blockElement.style.width = widthValue;
+        blockWidthOutput.textContent = blockWidthSlider.value;
+      });
+
+      inlineHeightSlider.addEventListener("input", () => {
+        const heightValue = inlineHeightSlider.value + "px";
+        inlineElement.style.height = heightValue;
+        inlineHeightOutput.textContent = inlineHeightSlider.value;
+      });
+
+      inlineWidthSlider.addEventListener("input", () => {
+        const widthValue = inlineWidthSlider.value + "px";
+        inlineElement.style.width = widthValue;
+        inlineWidthOutput.textContent = inlineWidthSlider.value;
+      });
+
+      inlineBlockHeightSlider.addEventListener("input", () => {
+        const heightValue = inlineBlockHeightSlider.value + "px";
+        inlineBlockElement.style.height = heightValue;
+        inlineBlockHeightOutput.textContent = inlineBlockHeightSlider.value;
+      });
+
+      inlineBlockWidthSlider.addEventListener("input", () => {
+        const widthValue = inlineBlockWidthSlider.value + "px";
+        inlineBlockElement.style.width = widthValue;
+        inlineBlockWidthOutput.textContent = inlineBlockWidthSlider.value;
+      });
+    </script>
+  </body>
+</html>
